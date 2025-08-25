@@ -13,7 +13,7 @@ if ! [[ "$subject" =~ $regex ]]; then
   echo "Commit invalid message :"
   echo "   $subject"
   echo ""
-  echo "Format attendu : [INDICATIF] Message court"
+  echo "Expected format : [INDICATOR] Short message"
   exit 1
 fi
 
