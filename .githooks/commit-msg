@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+msg_file="$1"
+subject="$(head -n1 "$msg_file")"
+
+regex='^\[(ADD|BUILD|DOC|FIX|GIT|MERGE|MSG|REPO|REFACTO|ROLLBACK|RM|STYLE|TMP|TEST|UPDATE|___)\] .+'
+
+if [[ "$subject" =~ ^Merge\  ]]; then
+  exit 0
+fi
+
+if ! [[ "$subject" =~ $regex ]]; then
+  echo "Commit invalid message :"
+  echo "   $subject"
+  echo ""
+  echo "Format attendu : [INDICATIF] Message court"
+  exit 1
+fi
+
+exit 0
